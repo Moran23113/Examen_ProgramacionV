@@ -2,10 +2,11 @@
 
 import 'package:examen_programacionv/lista_de_tareas.dart';
 import 'package:examen_programacionv/noticias.dart';
+import 'package:examen_programacionv/podcast.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp( Noticias());
+  runApp( Podcast());
 }
 
 class MainApp extends StatelessWidget {
