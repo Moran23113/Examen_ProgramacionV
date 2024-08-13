@@ -1,9 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:ffi' hide Double;  // Oculta `Double` de `dart:ffi`
+import 'dart:nativewrappers/_internal/vm/lib/ffi_native_type_patch.dart';
+import 'dart:nativewrappers/_internal/vm/lib/ffi_native_type_patch.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CambioDeMoneda extends StatefulWidget {
-
   const CambioDeMoneda({super.key});
 
   @override
@@ -11,8 +15,10 @@ class CambioDeMoneda extends StatefulWidget {
 }
 
 class _CambioDeMonedaState extends State<CambioDeMoneda> {
-    TextEditingController controller = TextEditingController();
-
+  TextEditingController entrada = TextEditingController();
+  TextEditingController salida = TextEditingController();
+  int valor = 0;
+  Double result=0 as Double;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +34,25 @@ class _CambioDeMonedaState extends State<CambioDeMoneda> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(onPressed: () {}, child: Text('Dolar')),
+                  ElevatedButton(
+                      onPressed: () {
+                        valor =
+                            entrada.text.isEmpty ? 0 : int.parse(entrada.text);
+                        print(valor);
+                        result = (valor * 24.8068) as Double;
+                        print(result);
+                      },
+                      child: Text('Dolar')),
                   SizedBox(width: 30.0),
-                  ElevatedButton(onPressed: () {}, child: Text('Euro')),
+                  ElevatedButton(
+                      onPressed: () {
+                        valor =
+                            entrada.text.isEmpty ? 0 : int.parse(entrada.text);
+                        
+                        print(result);
+
+                      },
+                      child: Text('Euro')),
                 ],
               ),
               Padding(padding: EdgeInsets.all(20.0)),
@@ -50,9 +72,9 @@ class _CambioDeMonedaState extends State<CambioDeMoneda> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('24.6834'),
+                      Text('L. 24.6834'),
                       SizedBox(width: 50.0),
-                      Text('24.8068'),
+                      Text('L .24.8068'),
                     ],
                   ),
                 ],
@@ -62,18 +84,27 @@ class _CambioDeMonedaState extends State<CambioDeMoneda> {
                 height: 50.0,
                 width: 100.0,
                 child: TextField(
-                  controller: TextEditingController(),
-                  readOnly: true,
-                  decoration: InputDecoration(labelText: 'USD'),
+                  controller: entrada,
+                  readOnly: false,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.vertical()),
+                      labelText: 'USD'),
                   onChanged: (value) {
-                    setState(() {
-                      
-                    });
+                    setState(() {});
                   },
                 ),
-              )
+              ),
+              Padding(padding: EdgeInsets.all(10.0)),
+              SizedBox(
+                  height: 50.0,
+                  width: 100.0,
+                  child: TextField(
+                    controller: salida,
+                    readOnly: true,
+                    decoration: InputDecoration(labelText: 'Conversion'),
+                  )),
             ],
-            
           )),
     );
   }
