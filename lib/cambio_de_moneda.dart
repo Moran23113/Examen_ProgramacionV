@@ -15,10 +15,13 @@ class _CambioDeMonedaState extends State<CambioDeMoneda> {
   TextEditingController salida = TextEditingController();
   double valor = 0.0;
   double result = 0.0;
+  String conversionTipo = 'Dólares a Lempiras'; // Tipo de conversión seleccionado
 
   // Define las tasas de cambio
-  final double tasaDeCambioDolar = 24.6834; 
-  final double tasaDeCambioEuro = 27.1234; 
+  final double tasaDeCambioDolarCompra = 24.6834;
+  final double tasaDeCambioDolarVenta = 24.8068;
+  final double tasaDeCambioEuroCompra = 27.1234;
+  final double tasaDeCambioEuroVenta = 27.2456;
 
   @override
   Widget build(BuildContext context) {
@@ -37,31 +40,43 @@ class _CambioDeMonedaState extends State<CambioDeMoneda> {
         body: Column(
           children: [
             Padding(padding: EdgeInsets.all(10.0)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    valor = entrada.text.isEmpty ? 0.0 : double.parse(entrada.text);
-                    print(valor);
-                    result = valor * tasaDeCambioDolar;
-                    print(result);
-                    salida.text = result.toStringAsFixed(2);
-                  },
-                  child: Text('Dólar'),
-                ),
-                SizedBox(width: 30.0),
-                ElevatedButton(
-                  onPressed: () {
-                    valor = entrada.text.isEmpty ? 0.0 : double.parse(entrada.text);
-                    print(valor);
-                    result = valor * tasaDeCambioEuro;
-                    print(result);
-                    salida.text = result.toStringAsFixed(2);
-                  },
-                  child: Text('Euro'),
-                ),
-              ],
+            DropdownButton<String>(
+              value: conversionTipo,
+              onChanged: (String? newValue) {
+                setState(() {
+                  conversionTipo = newValue!;
+                  entrada.text = ''; // Limpiar el campo de entrada al cambiar el tipo de conversión
+                  salida.text = ''; // Limpiar el campo de salida
+                });
+              },
+              items: <String>[
+                'Dólares a Lempiras',
+                'Euros a Lempiras',
+                'Lempiras a Dólares',
+                'Lempiras a Euros'
+              ].map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+            Padding(padding: EdgeInsets.all(10.0)),
+            ElevatedButton(
+              onPressed: () {
+                valor = entrada.text.isEmpty ? 0.0 : double.parse(entrada.text);
+                if (conversionTipo == 'Dólares a Lempiras') {
+                  result = valor * tasaDeCambioDolarCompra;
+                } else if (conversionTipo == 'Euros a Lempiras') {
+                  result = valor * tasaDeCambioEuroCompra;
+                } else if (conversionTipo == 'Lempiras a Dólares') {
+                  result = valor / tasaDeCambioDolarVenta;
+                } else if (conversionTipo == 'Lempiras a Euros') {
+                  result = valor / tasaDeCambioEuroVenta;
+                }
+                salida.text = result.toStringAsFixed(2);
+              },
+              child: Text('Convertir'),
             ),
             Padding(padding: EdgeInsets.all(20.0)),
             Row(
@@ -80,9 +95,17 @@ class _CambioDeMonedaState extends State<CambioDeMoneda> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('L. ${tasaDeCambioDolar.toStringAsFixed(4)}'),
+                    Text('L. ${tasaDeCambioDolarCompra.toStringAsFixed(4)}'),
                     SizedBox(width: 50.0),
-                    Text('L. ${tasaDeCambioEuro.toStringAsFixed(4)}'),
+                    Text('L. ${tasaDeCambioEuroCompra.toStringAsFixed(4)}'),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('USD ${tasaDeCambioDolarVenta.toStringAsFixed(4)}'),
+                    SizedBox(width: 50.0),
+                    Text('EUR ${tasaDeCambioEuroVenta.toStringAsFixed(4)}'),
                   ],
                 ),
               ],
@@ -90,7 +113,7 @@ class _CambioDeMonedaState extends State<CambioDeMoneda> {
             Padding(padding: EdgeInsets.all(10.0)),
             SizedBox(
               height: 50.0,
-              width: 100.0,
+              width: 150.0,
               child: TextField(
                 controller: entrada,
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
@@ -98,7 +121,7 @@ class _CambioDeMonedaState extends State<CambioDeMoneda> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.vertical(),
                   ),
-                  labelText: 'USD o EUR',
+                  labelText: conversionTipo.contains('Lempiras') ? 'Moneda' : 'USD o EUR',
                 ),
                 onChanged: (value) {
                   setState(() {});
@@ -108,7 +131,7 @@ class _CambioDeMonedaState extends State<CambioDeMoneda> {
             Padding(padding: EdgeInsets.all(10.0)),
             SizedBox(
               height: 50.0,
-              width: 100.0,
+              width: 150.0,
               child: TextField(
                 controller: salida,
                 readOnly: true,
