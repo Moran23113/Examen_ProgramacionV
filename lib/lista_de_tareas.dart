@@ -19,7 +19,6 @@ class ListaDeTareas extends StatefulWidget {
 }
 
 class _ListaDeTareasState extends State<ListaDeTareas> {
-  // Lista para almacenar las tareas
   final List<Map<String, String>> _tareas = [];
 
   void _agregarTarea(String tarea, String subtarea) {
