@@ -1,12 +1,13 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, unused_import
 
+import 'package:examen_programacionv/cambio_de_moneda.dart';
 import 'package:examen_programacionv/lista_de_tareas.dart';
 import 'package:examen_programacionv/noticias.dart';
 import 'package:examen_programacionv/podcast.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp( MainApp());
+  runApp( CambioDeMoneda());
 }
 
 class MainApp extends StatelessWidget {

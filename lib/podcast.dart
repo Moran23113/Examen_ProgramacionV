@@ -51,28 +51,24 @@ class Podcast extends StatelessWidget {
                 icon: Icon(Icons.skip_previous),
                 iconSize: 36.0,
                 onPressed: () {
-                  // Acción para retroceder
                 },
               ),
               IconButton(
                 icon: Icon(Icons.play_arrow),
                 iconSize: 36.0,
                 onPressed: () {
-                  // Acción para reproducir
                 },
               ),
               IconButton(
                 icon: Icon(Icons.pause),
                 iconSize: 36.0,
                 onPressed: () {
-                  // Acción para pausar
                 },
               ),
               IconButton(
                 icon: Icon(Icons.skip_next),
                 iconSize: 36.0,
                 onPressed: () {
-                  // Acción para avanzar
                 },
               ),
             ],
