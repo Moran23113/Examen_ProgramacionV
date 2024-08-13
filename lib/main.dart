@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+
+import 'package:examen_programacionv/lista_de_tareas.dart';
 import 'package:examen_programacionv/noticias.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp( Noticias());
 }
 
 class MainApp extends StatelessWidget {

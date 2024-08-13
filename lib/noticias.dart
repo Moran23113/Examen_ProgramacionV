@@ -26,10 +26,10 @@ class Noticias extends StatelessWidget {
                 shadowColor: Colors.black,
                 child: ListTile(
                   trailing: Image.network(
-                      "https://www.elheraldo.hn/binrepository/507x380/0c0/500d380/none/45933/JIFA/casa-s_8257092_20240812154540.jpg"),
+                      "https://ceutec.hn/wp-content/uploads/2024/07/01-como-hacer-un-cuadro-sinoptico.jpg"),
                   leading: Text('NOVEDAD!'),
                   title: Text(
-                      'Cinco puntos para entender fallo de la Sala Constitucional sobre las ZEDE'),
+                      '¿Cómo hacer un cuadro sinóptico?'),
                 ),
               ),
               Card(
@@ -37,9 +37,9 @@ class Noticias extends StatelessWidget {
                 child: ListTile(
                   leading: Text("12/8/24"),
                   title: Text(
-                      'BCH pide a empresarios que diversifiquen exportaciones'),
+                      '¿Conocés los lenguajes de programación?'),
                   trailing: Image.network(
-                      'https://cdn.latribuna.hn/wp-content/uploads/2024/08/bch-pide-a-empresarios-que-diversifiquen-exportaciones-1.jpg'),
+                      'https://ceutec.hn/wp-content/uploads/2024/07/cuales-son-lenguajes-programacion.png'),
                 ),
               ),
               Card(
@@ -57,9 +57,9 @@ class Noticias extends StatelessWidget {
                 child: ListTile(
                   leading: Text("10/8/24"),
                   title: Text(
-                      'Dana Energy decidió invertir 300 millone de dolares en energía'),
+                      '100 jóvenes más se suman a la familia CEUTEC y UNITEC'),
                   trailing: Image.network(
-                      'https://cdn.latribuna.hn/wp-content/uploads/2024/08/dana-energy-decidio-invertir-300-millones-en-energia.jpg'),
+                      'https://ceutec.hn/wp-content/uploads/2024/07/6_becas_fundacion_nasser_unitec_0001-scaled.jpg'),
                 ),
               ),
             ],
