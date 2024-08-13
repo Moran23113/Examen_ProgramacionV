@@ -6,7 +6,7 @@ import 'package:examen_programacionv/podcast.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp( Podcast());
+  runApp( MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -48,10 +48,19 @@ class MainApp extends StatelessWidget {
                 color: Colors.white,
               ),
               Padding(padding: EdgeInsets.all(10.0)),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(size: 30.0, Icons.podcasts),
-                color: Colors.white,
+              Builder(
+                builder: (context) {
+                  return IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Podcast()),
+                      );
+                    },
+                    icon: Icon(size: 30.0, Icons.podcasts),
+                    color: Colors.white,
+                  );
+                }
               ),
             ],
           ),
