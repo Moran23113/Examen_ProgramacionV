@@ -25,6 +25,12 @@ class _CambioDeMonedaState extends State<CambioDeMoneda> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           backgroundColor: Colors.lightBlue,
           title: Text('Cambio de Moneda'),
         ),
@@ -92,7 +98,7 @@ class _CambioDeMonedaState extends State<CambioDeMoneda> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.vertical(),
                   ),
-                  labelText: 'USD',
+                  labelText: 'USD o EUR',
                 ),
                 onChanged: (value) {
                   setState(() {});

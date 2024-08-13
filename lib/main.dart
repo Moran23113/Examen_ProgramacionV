@@ -7,7 +7,7 @@ import 'package:examen_programacionv/podcast.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp( CambioDeMoneda());
+  runApp( MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -37,16 +37,34 @@ class MainApp extends StatelessWidget {
                 ),
               ),
               Padding(padding: EdgeInsets.all(10.0)),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(size: 30.0, Icons.attach_money),
-                color: Colors.white,
+              Builder(
+                builder: (context) {
+                  return IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CambioDeMoneda()),
+                      );
+                    },
+                    icon: Icon(size: 30.0, Icons.attach_money),
+                    color: Colors.white,
+                  );
+                }
               ),
               Padding(padding: EdgeInsets.all(10.0)),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(size: 30.0, Icons.task_sharp),
-                color: Colors.white,
+              Builder(
+                builder: (context) {
+                  return IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ListaDeTareas()),
+                      );
+                    },
+                    icon: Icon(size: 30.0, Icons.task_sharp),
+                    color: Colors.white,
+                  );
+                }
               ),
               Padding(padding: EdgeInsets.all(10.0)),
               Builder(
