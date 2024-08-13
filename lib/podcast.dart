@@ -2,9 +2,15 @@
 
 import 'package:flutter/material.dart';
 
-class Podcast extends StatelessWidget {
+class Podcast extends StatefulWidget {
+  @override
+  State<Podcast> createState() => _PodcastState();
+}
+
+class _PodcastState extends State<Podcast> {
   @override
   Widget build(BuildContext context) {
+    bool repe=false;
     return MaterialApp(
       home: Scaffold(
         
@@ -69,12 +75,44 @@ class Podcast extends StatelessWidget {
                 icon: Icon(Icons.skip_next),
                 iconSize: 36.0,
                 onPressed: () {
+
                 },
               ),
+              IconButton(onPressed: () {
+                setState(() {
+                  
+                });
+                
+              }, icon: Icon(Icons.repeat)),
+              Checkbox(value: false, onChanged: (repe) {
+              
+              }),
             ],
           ),
           SizedBox(height: 20.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '00:00',
+                style: TextStyle(fontSize: 16),
+              ),
+              Expanded(
+                child: Slider(
+                  value: 0.15,
+                  onChanged: (value) {
+                    value = 0.30;
+                  },
+                ),
+              ),
+              Text(
+                '00:00',
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
         ],
+        
       ),
       )
     );

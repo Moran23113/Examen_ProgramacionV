@@ -7,7 +7,7 @@ import 'package:examen_programacionv/podcast.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp( MainApp());
+  runApp( Podcast());
 }
 
 class MainApp extends StatelessWidget {
