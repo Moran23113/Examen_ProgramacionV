@@ -10,6 +10,13 @@ class Noticias extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.lightBlue,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             title: const Text('Noticias'),
           ),
           body: Column(
@@ -28,11 +35,31 @@ class Noticias extends StatelessWidget {
               Card(
                 color: Colors.blueGrey,
                 child: ListTile(
-                  leading: Text("11/8/24"),
+                  leading: Text("12/8/24"),
                   title: Text(
                       'BCH pide a empresarios que diversifiquen exportaciones'),
                   trailing: Image.network(
                       'https://cdn.latribuna.hn/wp-content/uploads/2024/08/bch-pide-a-empresarios-que-diversifiquen-exportaciones-1.jpg'),
+                ),
+              ),
+              Card(
+                color: Colors.blue,
+                child: ListTile(
+                  leading: Text("11/8/24"),
+                  title: Text(
+                      'En presupuesto del CNE, Sefin dará dictamen una vez Congreso lo requiera'),
+                  trailing: Image.network(
+                      'https://cdn.latribuna.hn/wp-content/uploads/2024/08/Marlon-Ochoa-la-tribuna.jpg'),
+                ),
+              ),
+              Card(
+                color: Colors.redAccent,
+                child: ListTile(
+                  leading: Text("10/8/24"),
+                  title: Text(
+                      'Dana Energy decidió invertir 300 millone de dolares en energía'),
+                  trailing: Image.network(
+                      'https://cdn.latribuna.hn/wp-content/uploads/2024/08/dana-energy-decidio-invertir-300-millones-en-energia.jpg'),
                 ),
               ),
             ],
